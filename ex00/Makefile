@@ -7,16 +7,15 @@ OBJ = $(SRC:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CPP) $(CPPFLAGS) $(OBJ) -o $@
+	@$(CPP) $(CPPFLAGS) $(OBJ) -o $@
 
 %.o: %.cpp
-	$(CPP) $(CPPFLAGS) -c $< -o $@
-
+	@$(CPP) $(CPPFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJ)
+	@rm -rf $(OBJ)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
