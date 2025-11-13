@@ -13,8 +13,9 @@ Fixed::~Fixed(void)
 
 Fixed::Fixed(const Fixed &old)
 {
-	fixed_point = old.fixed_point;
+	// fixed_point = old.fixed_point;
 	std::cout << "Copy constructor called\n";
+	*this = old;
 }
 
 Fixed &Fixed::operator=(const Fixed &old)
