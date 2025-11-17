@@ -7,12 +7,12 @@ Fixed::Fixed( void )
 
 Fixed::Fixed(const int n)
 {
-    fixed_point = n * 256;
+    fixed_point = n << fractional_bits; // = n * 2^fractional_bits
 }
 
 Fixed::Fixed(const float f)
 {
-    fixed_point = roundf(f * 256);
+    fixed_point = roundf(f * (1 << fractional_bits));
 }
 
 Fixed::Fixed(const Fixed &old)
@@ -37,7 +37,7 @@ float   Fixed::toFloat( void ) const
 {
     float   res;
 
-    res = (float)fixed_point / 256;
+    res = (float)fixed_point / (1 << fractional_bits); // = fixed_point / 2^fractioanl_bits
     return (res);
 }
 
@@ -45,7 +45,7 @@ int     Fixed::toInt( void ) const
 {
     int     res;
 
-    res = fixed_point / 256;
+    res = fixed_point >> fractional_bits; // = fixed_point / 2^fractianal_bits
     return (res);
 }
 

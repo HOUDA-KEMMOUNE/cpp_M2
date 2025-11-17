@@ -8,13 +8,15 @@ Fixed::Fixed(void)
 Fixed::Fixed(const int n)
 {
     std::cout << "Int constructor called" << std::endl;
-    fixed_point = n * 256;
+    fixed_point = n << fractional_bits;
+    // fixed_point = n * 256;
 }
 
 Fixed::Fixed(const float f)
 {
     std::cout << "Float constructor called" << std::endl;
-    fixed_point = roundf(f * 256);
+    fixed_point = roundf(f * (1 << fractional_bits));
+    // fixed_point = roundf(f * 256);
 }
 
 Fixed::Fixed(const Fixed &old)
@@ -42,7 +44,7 @@ float   Fixed::toFloat( void ) const
 {
     float   res;
 
-    res = (float)fixed_point / 256;
+    res = (float)fixed_point / (1 << fractional_bits);
     return (res);
 }
 
@@ -50,7 +52,7 @@ int     Fixed::toInt( void ) const
 {
     int     res;
 
-    res = fixed_point / 256;
+    res = fixed_point >> fractional_bits;
     return (res);
 }
 
