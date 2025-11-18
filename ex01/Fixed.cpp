@@ -9,14 +9,12 @@ Fixed::Fixed(const int n)
 {
     std::cout << "Int constructor called" << std::endl;
     fixed_point = n << fractional_bits;
-    // fixed_point = n * 256;
 }
 
 Fixed::Fixed(const float f)
 {
     std::cout << "Float constructor called" << std::endl;
     fixed_point = roundf(f * (1 << fractional_bits));
-    // fixed_point = roundf(f * 256);
 }
 
 Fixed::Fixed(const Fixed &old)

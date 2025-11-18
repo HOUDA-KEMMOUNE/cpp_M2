@@ -12,7 +12,6 @@ class   Fixed
 		static const int	fractional_bits = 8;
 
 	public:
-		//Roba3i l9ahar
 		Fixed(void);
 		Fixed(const int n);
 		Fixed(const float f);
